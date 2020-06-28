@@ -27,3 +27,16 @@ paper{
   vertical-align: middle;
 }
 
+plot{
+  width: 30px;
+  height: 30px;
+}
+
+.chartArea{
+  display: flex;
+  flex-direction : column;
+  flex-wrap: wrap;
+}
+
+
+
