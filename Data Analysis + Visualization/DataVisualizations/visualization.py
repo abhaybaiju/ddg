@@ -64,10 +64,10 @@ plot(choropleth2017_wh, filename='choropleth2017.html', auto_open=False)
 
 # data2018_wh - choropleth
 d_data2018_wh = dict(type='choropleth'
-                     , locations=data2018_wh['Country']
+                     , locations=data2018_wh['Country or region']
                      , locationmode='country names'
                      , z=data2018_wh['Score']
-                     , text=data2018_wh['Country']
+                     , text=data2018_wh['Country or region']
                      , colorbar={'title': 'Happiness'})
 l_data2018_wh = dict(title='Happiness Index 2018'
                      , geo=dict(showframe=False
@@ -79,10 +79,10 @@ plot(choropleth2018_wh, filename='choropleth2018.html', auto_open=False)
 
 # data2019_wh - choropleth
 d_data2019_wh = dict(type='choropleth'
-                     , locations=data2019_wh['Country']
+                     , locations=data2019_wh['Country or region']
                      , locationmode='country names'
                      , z=data2019_wh['Score']
-                     , text=data2019_wh['Country']
+                     , text=data2019_wh['Country or region']
                      , colorbar={'title': 'Happiness'})
 l_data2019_wh = dict(title='Happiness Index 2019'
                      , geo=dict(showframe=False
@@ -95,19 +95,91 @@ plot(choropleth2019_wh, filename='choropleth2019.html', auto_open=False)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """Relationship Between GDP, Life Expectancy, and Perceptions of Corruption"""''
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-x_data = data2019_wh['GDP per capita']
-y_data = data2019_wh['Healthy life expectancy'] * 100
-z_data = data2019_wh['Perceptions of corruption']
+x_data_c = data2019_wh['GDP per capita']
+y_data_c = data2019_wh['Healthy life expectancy'] * 100
+z_data_c = data2019_wh['Perceptions of corruption']
 
-gdp_lifeexpectancy_corruption = go.Figure(data=[go.Scatter3d(
-    x=x_data
-    , y=y_data
-    , z=z_data
+gdp_life_corruption = go.Figure(data=[go.Scatter3d(
+    x=x_data_c
+    , y=y_data_c
+    , z=z_data_c
     , mode='markers'
+    , text=data2019_wh['Country or region']
     , marker=dict(
         size=6
-        , color=z_data
+        , color=z_data_c
         , colorscale='Viridis'
         , opacity=0.8
     )
 )])
+
+gdp_life_corruption.update_layout(scene=dict(
+            xaxis_title="GDP Per Capita ($100,000s)"
+            , yaxis_title="Healthy Life Expectancy (Years)"
+            , zaxis_title="Perceptions of Corruption"
+        )
+    , title="GDP vs Life Expectancy vs Corruption"
+    , margin=dict(l=0, r=0, b=0, t=0)
+)
+
+plot(gdp_life_corruption, filename = 'gdp_lifeExp_corruption.html', auto_open=False)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""Relationship Between GDP, Life Expectancy, and Freedom'"""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+x_data_f = data2019_wh['Freedom to make life choices']
+y_data_f = data2019_wh['Healthy life expectancy'] * 100
+z_data_f = data2019_wh['GDP per capita']
+
+gdp_life_freedom = go.Figure(data=[go.Scatter3d(
+    x=x_data_f
+    , y=y_data_f
+    , z=z_data_f
+    , mode='markers'
+    , text=data2019_wh['Country or region']
+    , marker=dict(
+        size=6
+        , color=z_data_f
+        , colorscale='Viridis'
+        , opacity=0.8
+    )
+)])
+
+gdp_life_freedom.update_layout(scene=dict(
+            xaxis_title="Freedom to Make Life Choices"
+            , yaxis_title="Healthy Life Expectancy (Years)"
+            , zaxis_title="GDP Per Capita ($100,000s)"
+        )
+    , title="GDP vs Life Expectancy vs Corruption"
+    , margin=dict(l=0, r=0, b=0, t=0)
+)
+
+plot(gdp_life_freedom, filename = 'gdp_lifeExp_freedom.html', auto_open=False)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""Relationship Between GDP and Life Expectancy"""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+gapminder_data = px.data.gapminder()
+gdp_lifeExp = px.scatter(
+    gapminder_data
+    , x="gdpPercap"
+    , y="lifeExp"
+    , animation_frame="year"
+    , animation_group="country"
+    , size="pop"
+    , color="continent"
+    , hover_name="country"
+    , log_x=True
+    , size_max=55
+    , range_x=[100, 100000]
+    , range_y=[25, 90]
+)
+
+gdp_lifeExp.update_layout(
+    xaxis_title="GDP Per Capita ($)"
+    , yaxis_title="Life Expectancy (Years)"
+    , title="GDP VS Life Expectancy"
+    , margin=dict(l=0, r=0, b=0, t=40)
+)
+
+plot(gdp_lifeExp, filename='gdp_lifeExp.html', auto_open=False)
