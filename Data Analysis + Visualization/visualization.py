@@ -183,3 +183,26 @@ gdp_lifeExp.update_layout(
 )
 
 plot(gdp_lifeExp, filename='DataVisualizations/gdp_lifeExp.html', auto_open=False)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""Relationship Between GDP and Happiness Index"""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+gdp_happiness = go.Figure(data=go.Scatter(
+    x=data2019_wh['GDP per capita']
+    , y=data2019_wh['Score']
+    , mode='markers'
+    , hovertext=data2019_wh['Country or region']
+    , marker=dict(
+        size=data2019_wh['Score'] ** 1.8
+        , color=data2019_wh['Score']
+    )
+))
+
+gdp_happiness.update_layout(
+    xaxis_title='GDP Per Capita ($100,000s)'
+    , yaxis_title='Happiness Score'
+    , title="GDP Vs Happiness"
+    , margin=dict(l=0, r=0, b=0, t=40)
+)
+
+plot(gdp_happiness, filename='DataVisualizations/gdp_happiness.html', auto_open=False)
