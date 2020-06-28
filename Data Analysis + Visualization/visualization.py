@@ -3,8 +3,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.offline import plot
 
-world_happiness_path = "../datasets/world-happiness/"
-gapminder_path = "../datasets/gapminder/datasets_5533_8279_gapminder.tsv"
+world_happiness_path = "datasets/world-happiness/"
+gapminder_path = "datasets/gapminder/datasets_5533_8279_gapminder.tsv"
 
 data2015_wh = pd.read_csv(world_happiness_path + "2015.csv")
 data2016_wh = pd.read_csv(world_happiness_path + "2016.csv")
@@ -30,7 +30,7 @@ l_data2015_wh = dict(title='Happiness Index 2015'
 choropleth2015_wh = go.Figure(data=[d_data2015_wh]
                               , layout=l_data2015_wh)
 choropleth2015_wh.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
-plot(choropleth2015_wh, filename='choropleth2015.html', auto_open=False)
+plot(choropleth2015_wh, filename='DataVisualizations/choropleth2015.html', auto_open=False)
 
 # data2016_wh - choropleth
 d_data2016_wh = dict(type='choropleth'
@@ -45,7 +45,7 @@ l_data2016_wh = dict(title='Happiness Index 2016'
 choropleth2016_wh = go.Figure(data=[d_data2016_wh]
                               , layout=l_data2016_wh)
 choropleth2016_wh.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
-plot(choropleth2016_wh, filename='choropleth2016.html', auto_open=False)
+plot(choropleth2016_wh, filename='DataVisualizations/choropleth2016.html', auto_open=False)
 
 # data2017_wh - choropleth
 d_data2017_wh = dict(type='choropleth'
@@ -60,7 +60,7 @@ l_data2017_wh = dict(title='Happiness Index 2017'
 choropleth2017_wh = go.Figure(data=[d_data2017_wh]
                               , layout=l_data2017_wh)
 choropleth2017_wh.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
-plot(choropleth2017_wh, filename='choropleth2017.html', auto_open=False)
+plot(choropleth2017_wh, filename='DataVisualizations/choropleth2017.html', auto_open=False)
 
 # data2018_wh - choropleth
 d_data2018_wh = dict(type='choropleth'
@@ -75,7 +75,7 @@ l_data2018_wh = dict(title='Happiness Index 2018'
 choropleth2018_wh = go.Figure(data=[d_data2018_wh]
                               , layout=l_data2018_wh)
 choropleth2018_wh.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
-plot(choropleth2018_wh, filename='choropleth2018.html', auto_open=False)
+plot(choropleth2018_wh, filename='DataVisualizations/choropleth2018.html', auto_open=False)
 
 # data2019_wh - choropleth
 d_data2019_wh = dict(type='choropleth'
@@ -90,7 +90,7 @@ l_data2019_wh = dict(title='Happiness Index 2019'
 choropleth2019_wh = go.Figure(data=[d_data2019_wh]
                               , layout=l_data2019_wh)
 choropleth2019_wh.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
-plot(choropleth2019_wh, filename='choropleth2019.html', auto_open=False)
+plot(choropleth2019_wh, filename='DataVisualizations/choropleth2019.html', auto_open=False)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """Relationship Between GDP, Life Expectancy, and Perceptions of Corruption"""''
@@ -122,7 +122,7 @@ gdp_life_corruption.update_layout(scene=dict(
     , margin=dict(l=0, r=0, b=0, t=0)
 )
 
-plot(gdp_life_corruption, filename = 'gdp_lifeExp_corruption.html', auto_open=False)
+plot(gdp_life_corruption, filename ='DataVisualizations/gdp_lifeExp_corruption.html', auto_open=False)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""Relationship Between GDP, Life Expectancy, and Freedom'"""""""""""""""
@@ -154,7 +154,7 @@ gdp_life_freedom.update_layout(scene=dict(
     , margin=dict(l=0, r=0, b=0, t=0)
 )
 
-plot(gdp_life_freedom, filename = 'gdp_lifeExp_freedom.html', auto_open=False)
+plot(gdp_life_freedom, filename ='DataVisualizations/gdp_lifeExp_freedom.html', auto_open=False)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""Relationship Between GDP and Life Expectancy"""""""""""""""""""""
@@ -182,4 +182,4 @@ gdp_lifeExp.update_layout(
     , margin=dict(l=0, r=0, b=0, t=40)
 )
 
-plot(gdp_lifeExp, filename='gdp_lifeExp.html', auto_open=False)
+plot(gdp_lifeExp, filename='DataVisualizations/gdp_lifeExp.html', auto_open=False)
