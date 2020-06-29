@@ -22,4 +22,3 @@ We were able to expand our knowledge of data science over the course of this hac
 ## What's next for Data Day Grind 2020
 We hope to expand on our project in the future, and use multiple datasets in tandem with the WHI dataset to perform even more detailed analysis and visualizations.
 
-DOMAIN.COM --> http://pursuitofhappiness.tech/
